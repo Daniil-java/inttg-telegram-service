@@ -1,0 +1,44 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: telegram-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: password
+    username: postgres
+    url: jdbc:postgresql://localhost:5437/telegram
+  jpa:
+    database: postgresql
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+bot:
+  name: TEMPTESTFIELDBOT
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 1000000
+        loggerLevel: basic
+
+integrations:
+  connect-timeout: 5000
+  read-timeout: 1000000
+  write-timeout: 5000
+  user-service:
+    url: http://localhost:8081/
+  ai-conversation-service:
+    url: http://localhost:8082/
+  interview-service:
+    url: http://localhost:8083/
+  hh-api:
+    url: https://api.hh.ru/
+  openai-api:
+    url: https://api.openai.com/v1/
+
